@@ -32,9 +32,9 @@
 
                     <!-- Logo -->
                     <div class="card-header pt-4 pb-4 text-center bg-primary">
-                        <a href="">
-                            <span><img src="{{asset('/')}}admin/assets/images/logo.png" alt="logo" height="22"></span>
-                        </a>
+                        <span>
+                                <h4 class="text-white">Hotel Management System</h4>
+                            </span>
                     </div>
 
                     <div class="card-body p-4">
