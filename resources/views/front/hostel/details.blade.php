@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Number of Occupants:</label>
+                            <label>Number of Adult:</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-outline-secondary" type="button" id="adultMinusBtn">-</button>

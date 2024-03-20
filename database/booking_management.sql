@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2024 at 07:20 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Mar 20, 2024 at 08:49 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,9 +36,19 @@ CREATE TABLE `bookings` (
   `room_type` varchar(255) DEFAULT NULL,
   `adult_count` int(11) DEFAULT NULL,
   `child_count` int(11) DEFAULT NULL,
+  `booking_status` varchar(255) NOT NULL DEFAULT 'Pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `hostel_id`, `customer_id`, `check_in_date`, `check_out_date`, `room_type`, `adult_count`, `child_count`, `booking_status`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, '2024-03-20', '2024-03-21', 'single', 1, 0, 'Pending', '2024-03-19 21:59:14', '2024-03-19 21:59:14'),
+(3, 1, 3, '2024-03-20', '2024-03-21', 'single', 1, 0, 'Pending', '2024-03-19 21:59:57', '2024-03-19 21:59:57'),
+(4, 1, 3, '2024-03-21', '2024-03-22', 'single', 3, 3, 'CheckOut', '2024-03-19 22:03:49', '2024-03-20 01:47:37');
 
 -- --------------------------------------------------------
 
@@ -63,7 +73,8 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`id`, `name`, `username`, `email`, `mobile`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'arman', 'arman', 'arman@gmail.com', '297843423', '$2y$10$9HAzenKwahyo8O/pFMEXueXZT9gk5m5PE81BdRsOFyMPulh44gD/G', '2024-03-19 09:33:22', '2024-03-19 09:33:22'),
-(2, 'arman', 'arman2', 'arman@gmail.com', NULL, '$2y$10$e7ETZuQi5k0CZBdaYwJ1zOnT9G5y2yrowuS6wN6AMN5d0hRP9LKD2', '2024-03-19 09:58:54', '2024-03-19 09:58:54');
+(2, 'arman', 'arman2', 'arman@gmail.com', NULL, '$2y$10$e7ETZuQi5k0CZBdaYwJ1zOnT9G5y2yrowuS6wN6AMN5d0hRP9LKD2', '2024-03-19 09:58:54', '2024-03-19 09:58:54'),
+(3, 'Md Arman Ali', 'arman3', 'mdarmanali0700@gmail.com', NULL, '$2y$10$byaW67ppl1U47kcBzFJRF.vPf8tFbaFkTVgp1VVo/NksVQ0Tpr4RO', '2024-03-19 21:59:47', '2024-03-19 21:59:47');
 
 -- --------------------------------------------------------
 
@@ -91,7 +102,6 @@ CREATE TABLE `hostels` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `hostel_name` varchar(255) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
-  `price` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `room_availability` varchar(255) DEFAULT NULL,
   `single_room` varchar(255) DEFAULT NULL,
@@ -106,8 +116,8 @@ CREATE TABLE `hostels` (
 -- Dumping data for table `hostels`
 --
 
-INSERT INTO `hostels` (`id`, `hostel_name`, `location`, `price`, `description`, `room_availability`, `single_room`, `double_room`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Hotel Sheratons', 'Karwan Bazar', '100', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '11', '5', '6', 'Hostel/images/hotel-sheraton-image-1710867530.webp', 1, '2024-03-19 10:58:50', '2024-03-19 11:21:14');
+INSERT INTO `hostels` (`id`, `hostel_name`, `location`, `description`, `room_availability`, `single_room`, `double_room`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Hotel Sheratons', 'Karwan Bazar', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '11', '5', '6', 'Hostel/images/hotel-sheraton-image-1710867530.webp', 1, '2024-03-19 10:58:50', '2024-03-20 01:47:37');
 
 -- --------------------------------------------------------
 
@@ -187,8 +197,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('DLuvjwSiBnVzBYgK8G5Gn2LZQXMsXihDB1kB1UO7', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoidjZYTFRZb3VlODBHcDl4RnBKOVlLUEpVTmhnTEN0dGsyWkFROE5DMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTk6Imh0dHA6Ly9sb2NhbGhvc3QvYm9va2luZy1tYW5hZ2VtZW50L3B1YmxpYy9ob3N0ZWwtZGV0YWlscy8xIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRxeHBNLm9DRlluNGE5RnpVZ1IvdjEud092ZUZ2ZmU2djd0WE1uM0YxcU4zVmlJelZycC4zeSI7czo1OiJhbGVydCI7YTowOnt9czo3OiJ1c2VyX2lkIjtpOjE7czo4OiJ1c2VybmFtZSI7czo1OiJhcm1hbiI7fQ==', 1710872028),
-('pMaCna0Cx4XIZOlipQ7yu5Er4kKWkaPzHwn4q2kq', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTEg5V2x1R21iRlRLRThhS1poV2VRNnB3RXlRNmlXdTFQajREaDlLNiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly9sb2NhbGhvc3QvYm9va2luZy1tYW5hZ2VtZW50L3B1YmxpYyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1710863127);
+('Rrne6lEFHbuyL4DkhR453Qzm2buphII6ds082uc0', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiNXhSVjl2bUd0eDZSc29OMFdtQld5WEJaYndLU2F6dTRVeWcwRUNlNyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjU3OiJodHRwOi8vbG9jYWxob3N0L2Jvb2tpbmctbWFuYWdlbWVudC9wdWJsaWMvYm9va2luZy1zaG93LzQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHF4cE0ub0NGWW40YTlGelVnUi92MS53T3ZlRnZmZTZ2N3RYTW4zRjFxTjNWaUl6VnJwLjN5IjtzOjU6ImFsZXJ0IjthOjA6e319', 1710920865);
 
 -- --------------------------------------------------------
 
@@ -291,13 +300,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

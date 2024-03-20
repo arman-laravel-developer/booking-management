@@ -22,6 +22,7 @@ class DashboardController extends Controller
 
     public function show($id)
     {
-        return view('admin.booking.show');
+        $booking = Booking::find($id);
+        return view('admin.booking.show', compact('booking'));
     }
 }

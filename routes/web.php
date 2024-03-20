@@ -26,6 +26,10 @@ Route::post('/sign-in', [CustomerController::class, 'login_check'])->name('sign.
 Route::get('/sign-in', [CustomerController::class, 'logout'])->name('logout.customer');
 
 Route::post('/booking-hostel', [BookingController::class, 'index'])->name('booking.hostel');
+Route::get('/booking-check-in/{id}', [BookingController::class, 'checkIn'])->name('booking.checkId-approved');
+Route::get('/booking-cancel/{id}', [BookingController::class, 'cancel'])->name('booking.cancel');
+Route::get('/booking-check-out/{id}', [BookingController::class, 'checkOut'])->name('booking.checkOut-approved');
+Route::get('/booking-delete/{id}', [BookingController::class, 'delete'])->name('booking.delete');
 
 Route::get('/hostel-details/{id}', [HomeController::class, 'details'])->name('hostel.details');
 
