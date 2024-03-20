@@ -121,7 +121,7 @@ class BookingController extends Controller
 
         $hostel->room_availability++;
         $hostel->save();
-        
+
         $data['hostel_name'] = $booking->hostel->hostel_name;
         $data['customer_name'] = $booking->customer->name;
         $data['customer_email'] = $booking->customer->email;
