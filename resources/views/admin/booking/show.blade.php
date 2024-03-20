@@ -91,7 +91,9 @@
                         <a href="{{route('booking.checkId-approved', ['id' => $booking->id])}}" class="btn btn-success">Check In Approved</a>
                         <a href="{{route('booking.cancel', ['id' => $booking->id])}}" class="btn btn-danger">Cancel</a>
                     @elseif($booking->booking_status == 'Approved')
-                        <a href="{{route('booking.checkOut-approved', ['id' => $booking->id])}}" class="btn btn-success">Check Out Approved</a>
+                        <a href="{{route('booking.checkOut-approved', ['id' => $booking->id])}}" class="btn btn-primary">Check Out Approved</a>
+                        <br>
+                        <small class="text-danger mt-1">Note: Please CheckOut Approved For Guest CheckOut From Hostel</small>
                     @else
                         <a href="{{route('booking.delete', ['id' => $booking->id])}}" class="btn btn-danger">Delete</a>
                     @endif
