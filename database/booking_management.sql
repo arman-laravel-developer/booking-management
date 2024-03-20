@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2024 at 08:49 AM
+-- Generation Time: Mar 20, 2024 at 09:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -117,7 +117,9 @@ CREATE TABLE `hostels` (
 --
 
 INSERT INTO `hostels` (`id`, `hostel_name`, `location`, `description`, `room_availability`, `single_room`, `double_room`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Hotel Sheratons', 'Karwan Bazar', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '11', '5', '6', 'Hostel/images/hotel-sheraton-image-1710867530.webp', 1, '2024-03-19 10:58:50', '2024-03-20 01:47:37');
+(1, 'Hotel Sheratons', 'Karwan Bazar', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '11', '5', '6', 'Hostel/images/hotel-sheraton-image-1710867530.webp', 1, '2024-03-19 10:58:50', '2024-03-20 01:47:37'),
+(3, 'Radisson Blu Water Garden Hotel', 'Dhaka', 'The Radisson Blu Dhaka Water Garden offers hotel guests free Wi-Fi, on-site dining, and proximity to Hazrat Shahjalal International Airport. Book now!', '25', '10', '15', 'Hostel/images/radisson-blu-water-garden-hotel-image-1710922617.avif', 1, '2024-03-20 02:16:57', '2024-03-20 02:16:57'),
+(4, 'Dhaka Regency Hotel & Resort', 'Dhaka', 'Best Business Hotel in Dhaka — Offers 221 luxuriously Rooms & Suites, Restaurants, Thai Spa, Bar, Lounge, Pool, Venues', '36', '25', '11', 'Hostel/images/dhaka-regency-hotel-resort-image-1710922816.jpg', 1, '2024-03-20 02:20:16', '2024-03-20 02:20:16');
 
 -- --------------------------------------------------------
 
@@ -197,7 +199,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Rrne6lEFHbuyL4DkhR453Qzm2buphII6ds082uc0', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiNXhSVjl2bUd0eDZSc29OMFdtQld5WEJaYndLU2F6dTRVeWcwRUNlNyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjU3OiJodHRwOi8vbG9jYWxob3N0L2Jvb2tpbmctbWFuYWdlbWVudC9wdWJsaWMvYm9va2luZy1zaG93LzQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHF4cE0ub0NGWW40YTlGelVnUi92MS53T3ZlRnZmZTZ2N3RYTW4zRjFxTjNWaUl6VnJwLjN5IjtzOjU6ImFsZXJ0IjthOjA6e319', 1710920865);
+('Rrne6lEFHbuyL4DkhR453Qzm2buphII6ds082uc0', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiNXhSVjl2bUd0eDZSc29OMFdtQld5WEJaYndLU2F6dTRVeWcwRUNlNyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjU5OiJodHRwOi8vbG9jYWxob3N0L2Jvb2tpbmctbWFuYWdlbWVudC9wdWJsaWMvaG9zdGVsLWRldGFpbHMvNCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkcXhwTS5vQ0ZZbjRhOUZ6VWdSL3YxLndPdmVGdmZlNnY3dFhNbjNGMXFOM1ZpSXpWcnAuM3kiO3M6NToiYWxlcnQiO2E6MDp7fX0=', 1710922819);
 
 -- --------------------------------------------------------
 
@@ -318,7 +320,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hostels`
 --
 ALTER TABLE `hostels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
