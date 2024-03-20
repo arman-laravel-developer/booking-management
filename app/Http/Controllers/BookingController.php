@@ -23,21 +23,23 @@ class BookingController extends Controller
         $booking->child_count = $request->child_count;
         $booking->save();
 
+        if (env('MAIL_USERNAME') != null)
+        {
+            $data['hostel_name'] = $booking->hostel->hostel_name;
+            $data['customer_name'] = $booking->customer->name;
+            $data['customer_email'] = $booking->customer->email;
+            $data['check_in_date'] = $request->check_in_date;
+            $data['check_out_date'] = $request->check_out_date;
+            $data['room_type'] = $request->room_type;
+            $data['adult_count'] = $request->adult_count;
+            $data['child_count'] = $request->child_count;
+            $data['booking_status'] = 'Pending';
+            $data['title'] = 'Hostel Booking Confirmation';
 
-        $data['hostel_name'] = $booking->hostel->hostel_name;
-        $data['customer_name'] = $booking->customer->name;
-        $data['customer_email'] = $booking->customer->email;
-        $data['check_in_date'] = $request->check_in_date;
-        $data['check_out_date'] = $request->check_out_date;
-        $data['room_type'] = $request->room_type;
-        $data['adult_count'] = $request->adult_count;
-        $data['child_count'] = $request->child_count;
-        $data['booking_status'] = 'Pending';
-        $data['title'] = 'Hostel Booking Confirmation';
-
-        Mail::send('emails.hostelBookingConfirmation', ['data' => $data], function ($message) use ($data){
-            $message->to($data['customer_email'])->subject($data['title']);
-        });
+            Mail::send('emails.hostelBookingConfirmation', ['data' => $data], function ($message) use ($data){
+                $message->to($data['customer_email'])->subject($data['title']);
+            });
+        }
         flash()->success('Booking Successfull','Your booking has been successfull.');
         return redirect()->back();
     }
@@ -63,20 +65,23 @@ class BookingController extends Controller
         $hostel->room_availability--;
         $hostel->save();
 
-        $data['hostel_name'] = $booking->hostel->hostel_name;
-        $data['customer_name'] = $booking->customer->name;
-        $data['customer_email'] = $booking->customer->email;
-        $data['check_in_date'] = $booking->check_in_date;
-        $data['check_out_date'] = $booking->check_out_date;
-        $data['room_type'] = $booking->room_type;
-        $data['adult_count'] = $booking->adult_count;
-        $data['child_count'] = $booking->child_count;
-        $data['booking_status'] = 'CheckIN Approved';
-        $data['title'] = 'Hostel Booking CheckIn Confirmation';
+        if (env('MAIL_USERNAME') != null)
+        {
+            $data['hostel_name'] = $booking->hostel->hostel_name;
+            $data['customer_name'] = $booking->customer->name;
+            $data['customer_email'] = $booking->customer->email;
+            $data['check_in_date'] = $booking->check_in_date;
+            $data['check_out_date'] = $booking->check_out_date;
+            $data['room_type'] = $booking->room_type;
+            $data['adult_count'] = $booking->adult_count;
+            $data['child_count'] = $booking->child_count;
+            $data['booking_status'] = 'CheckIN Approved';
+            $data['title'] = 'Hostel Booking CheckIn Confirmation';
 
-        Mail::send('emails.hostelBookingCheckIn', ['data' => $data], function ($message) use ($data){
-            $message->to($data['customer_email'])->subject($data['title']);
-        });
+            Mail::send('emails.hostelBookingCheckIn', ['data' => $data], function ($message) use ($data) {
+                $message->to($data['customer_email'])->subject($data['title']);
+            });
+        }
         Alert::success('Booking Check-in Successfully', '');
         return redirect()->back();
     }
@@ -122,20 +127,23 @@ class BookingController extends Controller
         $hostel->room_availability++;
         $hostel->save();
 
-        $data['hostel_name'] = $booking->hostel->hostel_name;
-        $data['customer_name'] = $booking->customer->name;
-        $data['customer_email'] = $booking->customer->email;
-        $data['check_in_date'] = $booking->check_in_date;
-        $data['check_out_date'] = $booking->check_out_date;
-        $data['room_type'] = $booking->room_type;
-        $data['adult_count'] = $booking->adult_count;
-        $data['child_count'] = $booking->child_count;
-        $data['booking_status'] = 'CheckOut Approved';
-        $data['title'] = 'Hostel Booking CheckOut Confirmation';
+        if (env('MAIL_USERNAME') != null)
+        {
+            $data['hostel_name'] = $booking->hostel->hostel_name;
+            $data['customer_name'] = $booking->customer->name;
+            $data['customer_email'] = $booking->customer->email;
+            $data['check_in_date'] = $booking->check_in_date;
+            $data['check_out_date'] = $booking->check_out_date;
+            $data['room_type'] = $booking->room_type;
+            $data['adult_count'] = $booking->adult_count;
+            $data['child_count'] = $booking->child_count;
+            $data['booking_status'] = 'CheckOut Approved';
+            $data['title'] = 'Hostel Booking CheckOut Confirmation';
 
-        Mail::send('emails.hostelBookingCheckOut', ['data' => $data], function ($message) use ($data){
-            $message->to($data['customer_email'])->subject($data['title']);
-        });
+            Mail::send('emails.hostelBookingCheckOut', ['data' => $data], function ($message) use ($data) {
+                $message->to($data['customer_email'])->subject($data['title']);
+            });
+        }
         Alert::success('Booking CheckOut Successfully', '');
         return redirect()->back();
     }
