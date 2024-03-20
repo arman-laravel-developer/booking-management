@@ -54,15 +54,6 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-md-2 col-form-label">Price</label>
-                                    <div class="col-md-10">
-                                        <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="inputEmail3" placeholder="Enter Price"/>
-                                        @error('price')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
                                     <label class="col-md-2 col-form-label">Single Room Quantity</label>
                                     <div class="col-md-10">
                                         <input type="number" class="form-control @error('single_room') is-invalid @enderror" name="single_room" id="inputEmail3" placeholder="Enter Single Room Quantity"/>

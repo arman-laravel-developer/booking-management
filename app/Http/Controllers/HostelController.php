@@ -29,7 +29,6 @@ class HostelController extends Controller
         $hostel = new Hostel();
         $hostel->hostel_name = $request->hostel_name;
         $hostel->location = $request->location;
-        $hostel->price = $request->price;
         $hostel->description = $request->description;
         $hostel->room_availability = $request->single_room + $request->double_room;
         $hostel->single_room = $request->single_room;
@@ -68,7 +67,6 @@ class HostelController extends Controller
         $hostel = Hostel::find($id);
         $hostel->hostel_name = $request->hostel_name;
         $hostel->location = $request->location;
-        $hostel->price = $request->price;
         $hostel->description = $request->description;
         $hostel->room_availability = $request->single_room + $request->double_room;
         $hostel->single_room = $request->single_room;

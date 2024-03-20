@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('room_type')->nullable();
             $table->integer('adult_count')->nullable();
             $table->integer('child_count')->nullable();
+            $table->string('booking_status')->default('Pending');
             $table->timestamps();
         });
     }

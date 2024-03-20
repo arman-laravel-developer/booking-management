@@ -49,9 +49,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Rooms</a>
-                    </li>
                     @if(Session::get('user_id'))
                         @php($customer = \App\Models\Customer::find(Session::get('user_id')))
                         <li class="nav-item active">

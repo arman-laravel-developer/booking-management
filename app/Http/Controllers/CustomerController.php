@@ -51,7 +51,7 @@ class CustomerController extends Controller
                 Session::put('user_id', $customer->id);
                 Session::put('username', $customer->username);
 
-                flash()->success('Registration Successfull','You have been logged in.');
+                flash()->success('Login Successfull','You have been logged in.');
                 return redirect()->route('home');
             }
             else

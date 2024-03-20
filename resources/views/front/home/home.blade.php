@@ -11,7 +11,7 @@
                         <a href="{{route('hostel.details', ['id' => $hostel->id])}}"><img src="{{asset($hostel->image)}}" class="card-img-top" style="height: 250px;" alt="Hostel 1"></a>
                         <div class="card-body">
                             <a href="{{route('hostel.details', ['id' => $hostel->id])}}" style="text-decoration: none"><h5 class="card-title">{{$hostel->hostel_name}}</h5></a>
-                            <p class="card-text">Fare: ${{$hostel->price}}/night</p>
+                            <p class="card-text">Room: {{$hostel->room_availability}} room available</p>
                             <p class="card-text">Location: {{$hostel->location}}</p>
                         </div>
                     </div>

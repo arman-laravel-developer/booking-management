@@ -511,6 +511,12 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-item">
+                    <a href="{{route('booking.manage')}}" class="side-nav-link">
+                        <i class="uil-shop"></i>
+                        <span> Manage Booking </span>
+                    </a>
+                </li>
             </ul>
             <!--- End Sidemenu -->
             <div class="clearfix"></div>

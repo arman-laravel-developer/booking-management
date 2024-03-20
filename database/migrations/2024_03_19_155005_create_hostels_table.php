@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('hostel_name')->nullable();
             $table->string('location')->nullable();
-            $table->string('price')->nullable();
             $table->text('description')->nullable();
             $table->string('room_availability')->nullable();
             $table->string('single_room')->nullable();

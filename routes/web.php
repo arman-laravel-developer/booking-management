@@ -32,6 +32,9 @@ Route::get('/hostel-details/{id}', [HomeController::class, 'details'])->name('ho
 Route::middleware([ 'auth:sanctum',  config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/booking', [DashboardController::class, 'booking'])->name('booking.manage');
+    Route::get('/booking-show/{id}', [DashboardController::class, 'show'])->name('booking.show');
+
     Route::prefix('hostel')->group(function () {
         Route::get('/add', [HostelController::class, 'index'])->name('hostel.add');
         Route::post('/new', [HostelController::class, 'create'])->name('hostel.new');
